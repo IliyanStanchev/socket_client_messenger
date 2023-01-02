@@ -7,7 +7,7 @@ import java.util.List;
 
 import bg.tu_varna.sit.si.models.UserNotification;
 import bg.tu_varna.sit.si.requests.SocketRequests;
-import bg.tu_varna.sit.si.socket_client_messenger.requests.IRequestResponseHandler;
+import bg.tu_varna.sit.si.socket_client_messenger.interfaces.IRequestResponseHandler;
 import bg.tu_varna.sit.si.socket_client_messenger.services.NewsService;
 
 public class NewsViewModel extends ViewModel implements IRequestResponseHandler {

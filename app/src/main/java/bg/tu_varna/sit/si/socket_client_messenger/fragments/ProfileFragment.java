@@ -18,7 +18,7 @@ import bg.tu_varna.sit.si.models.User;
 import bg.tu_varna.sit.si.requests.SocketRequests;
 import bg.tu_varna.sit.si.socket_client_messenger.R;
 import bg.tu_varna.sit.si.socket_client_messenger.factories.ProfileViewModelFactory;
-import bg.tu_varna.sit.si.socket_client_messenger.requests.IRequestResponseHandler;
+import bg.tu_varna.sit.si.socket_client_messenger.interfaces.IRequestResponseHandler;
 import bg.tu_varna.sit.si.socket_client_messenger.services.UserService;
 import bg.tu_varna.sit.si.socket_client_messenger.viewModels.ProfileViewModel;
 

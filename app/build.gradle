@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
 }
-
 android {
     namespace 'bg.tu_varna.sit.si.socket_client_messenger'
     compileSdk 32
@@ -17,6 +16,10 @@ android {
     }
 
     buildTypes {
+        debug{
+            buildConfigField "String", "SERVER_IP", "\"10.0.2.2\""
+            buildConfigField "String", "SERVER_PORT",  "\"8080\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

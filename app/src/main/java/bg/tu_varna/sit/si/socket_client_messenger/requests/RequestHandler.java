@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.util.UUID;
 
 import bg.tu_varna.sit.si.requests.SocketRequests;
+import bg.tu_varna.sit.si.socket_client_messenger.BuildConfig;
+import bg.tu_varna.sit.si.socket_client_messenger.interfaces.IRequestResponseHandler;
 
 public class RequestHandler {
 
@@ -25,14 +27,14 @@ public class RequestHandler {
         this.responseHandler = responseHandler;
     }
 
-    public void SendRequest( Object request) throws IOException {
+    public void SendRequest( Object request) {
 
         RequestSender requestSender = new RequestSender(requestType, request);
         Thread thread = new Thread(requestSender);
         thread.start();
     }
 
-    public void SendRequest() throws IOException {
+    public void SendRequest() {
 
         RequestSender requestSender = new RequestSender(requestType);
         Thread thread = new Thread(requestSender);
@@ -82,7 +84,7 @@ public class RequestHandler {
         public void run() {
 
             try {
-                socket = new Socket("10.0.2.2", 8080);
+                socket = new Socket(BuildConfig.SERVER_IP, Integer.parseInt(BuildConfig.SERVER_PORT));
                 output = new ObjectOutputStream(socket.getOutputStream());
                 input = new ObjectInputStream(socket.getInputStream());
                 new Thread(new ResponseListener()).start();
