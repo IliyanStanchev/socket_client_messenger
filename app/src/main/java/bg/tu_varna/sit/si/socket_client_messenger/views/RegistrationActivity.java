@@ -18,11 +18,11 @@ import bg.tu_varna.sit.si.models.User;
 import bg.tu_varna.sit.si.requests.ResponseCodes;
 import bg.tu_varna.sit.si.requests.SocketRequests;
 import bg.tu_varna.sit.si.socket_client_messenger.R;
-import bg.tu_varna.sit.si.socket_client_messenger.factories.LoginViewModelFactory;
+import bg.tu_varna.sit.si.socket_client_messenger.factories.UserViewModelFactory;
 import bg.tu_varna.sit.si.socket_client_messenger.notifiers.ToastNotifier;
 import bg.tu_varna.sit.si.socket_client_messenger.interfaces.IRequestResponseHandler;
 import bg.tu_varna.sit.si.socket_client_messenger.services.UserService;
-import bg.tu_varna.sit.si.socket_client_messenger.viewModels.LoginViewModel;
+import bg.tu_varna.sit.si.socket_client_messenger.viewModels.UserViewModel;
 
 public class RegistrationActivity extends AppCompatActivity implements IRequestResponseHandler {
 
@@ -37,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity implements IRequestR
     private Button btnBackToLogin;
     private Button btnRegister;
 
-    private LoginViewModel loginViewModel;
+    private UserViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +57,8 @@ public class RegistrationActivity extends AppCompatActivity implements IRequestR
         btnRegister = findViewById(R.id.btnRegister);
 
         UserService userService = new UserService();
-        LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userService);
-        loginViewModel = new ViewModelProvider( this, loginViewModelFactory).get(LoginViewModel.class);
+        UserViewModelFactory loginViewModelFactory = new UserViewModelFactory(userService);
+        loginViewModel = new ViewModelProvider( this, loginViewModelFactory).get(UserViewModel.class);
 
         btnBackToLogin.setOnClickListener(v -> {
             try {

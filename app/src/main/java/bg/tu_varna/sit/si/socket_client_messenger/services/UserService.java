@@ -26,4 +26,10 @@ public class UserService {
         requestHandler.SendRequest(user);
         return true;
     }
+
+    public void loadUsers(int userId, IRequestResponseHandler responseHandler) {
+
+        RequestHandler requestHandler = new RequestHandler(SocketRequests.SocketRequestType.GET_USERS, responseHandler);
+        requestHandler.SendRequest(userId);
+    }
 }

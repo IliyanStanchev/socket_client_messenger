@@ -10,6 +10,8 @@ import android.widget.ListView;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +33,8 @@ public class ChatFragment extends Fragment implements IRequestResponseHandler {
 
     private EditText editText;
     private AppCompatImageButton btnSendMessage;
+    private AppCompatImageButton btnGoBack;
+    private AppCompatImageButton btnAddUser;
     private ChatAdapter messageAdapter;
     private ListView messagesView;
 
@@ -41,6 +45,7 @@ public class ChatFragment extends Fragment implements IRequestResponseHandler {
 
         User currentUser = (User) getActivity().getIntent().getSerializableExtra("user");
         Chat currentChat = (Chat) getActivity().getIntent().getSerializableExtra("chat");
+        boolean openedFromChats = getActivity().getIntent().getBooleanExtra("openedFromChats", false);
 
         messageAdapter = new ChatAdapter(getContext(), currentUser);
         messagesView = (ListView) root.findViewById(R.id.messages_view);
@@ -73,6 +78,21 @@ public class ChatFragment extends Fragment implements IRequestResponseHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        btnGoBack = root.findViewById(R.id.btnChatGoBack);
+        btnGoBack.setOnClickListener(v -> {
+
+            NavController navController = NavHostFragment.findNavController(this);
+            if( openedFromChats )
+            {
+                navController.navigate(R.id.action_chatFragment_to_chatsFragment);
+            }
+            else
+            {
+                navController.navigate(R.id.action_chatFragment_to_usersFragment);
+            }
+
         });
 
         return root;

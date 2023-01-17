@@ -66,7 +66,7 @@ public class NewsFragment extends Fragment implements INewClickListener, INewRef
         sharedNewViewModel.title.setValue(title);
         sharedNewViewModel.content.setValue(content);
 
-        Navigation.findNavController(requireView()).navigate(R.id.actionNavToFullNews);
+        Navigation.findNavController(requireView()).navigate(R.id.action_newsFragment_to_newFragment);
     }
 
     @Override

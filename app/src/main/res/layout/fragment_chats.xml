@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.NewsFragment">
+    tools:context=".fragments.ChatsFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNews"
+            android:id="@+id/rvChats"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

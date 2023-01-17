@@ -11,15 +11,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.io.IOException;
 
-import bg.tu_varna.sit.si.enumerables.ChatType;
-import bg.tu_varna.sit.si.models.Chat;
 import bg.tu_varna.sit.si.models.User;
 import bg.tu_varna.sit.si.requests.SocketRequests;
 import bg.tu_varna.sit.si.socket_client_messenger.R;
-import bg.tu_varna.sit.si.socket_client_messenger.factories.LoginViewModelFactory;
+import bg.tu_varna.sit.si.socket_client_messenger.factories.UserViewModelFactory;
 import bg.tu_varna.sit.si.socket_client_messenger.interfaces.IRequestResponseHandler;
 import bg.tu_varna.sit.si.socket_client_messenger.services.UserService;
-import bg.tu_varna.sit.si.socket_client_messenger.viewModels.LoginViewModel;
+import bg.tu_varna.sit.si.socket_client_messenger.viewModels.UserViewModel;
 
 public class LoginActivity extends AppCompatActivity implements IRequestResponseHandler {
 
@@ -30,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements IRequestResponse
     private Button btnSignIn;
     private Button btnRegister;
 
-    private LoginViewModel loginViewModel;
+    private UserViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +43,8 @@ public class LoginActivity extends AppCompatActivity implements IRequestResponse
         btnRegister = findViewById(R.id.btnMakeRegistration);
 
         UserService userService = new UserService();
-        LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userService);
-        loginViewModel = new ViewModelProvider( this, loginViewModelFactory).get(LoginViewModel.class);
+        UserViewModelFactory loginViewModelFactory = new UserViewModelFactory(userService);
+        loginViewModel = new ViewModelProvider( this, loginViewModelFactory).get(UserViewModel.class);
         
         btnSignIn.setOnClickListener(v -> {
             try {
@@ -69,8 +67,8 @@ public class LoginActivity extends AppCompatActivity implements IRequestResponse
 
     private void login() throws IOException {
 
-        //loginViewModel.login( new User(etEmail.getText().toString(), etPassword.getText().toString()), this);
-        loginViewModel.login( new User("ench3r@gmail.com", "sach2@Password"), this);
+        loginViewModel.login( new User(etEmail.getText().toString(), etPassword.getText().toString()), this);
+        //loginViewModel.login( new User("ench3r@gmail.com", "sach2@Password"), this);
     }
 
     @Override
@@ -91,18 +89,7 @@ public class LoginActivity extends AppCompatActivity implements IRequestResponse
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("user", response);
-        initializeSystemChat( intent );
 
         startActivity(intent);
-    }
-
-    private void initializeSystemChat(Intent intent) {
-
-        Chat chat = new Chat();
-        chat.setId(1);
-        chat.setName("System");
-        chat.setChatType(ChatType.SYSTEM);
-
-        intent.putExtra("chat", chat);
     }
 }

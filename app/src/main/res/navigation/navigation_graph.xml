@@ -12,26 +12,53 @@
         tools:layout="@layout/fragment_news" >
 
         <action
-            android:id="@+id/action_newsFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            android:id="@+id/action_newsFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment" />
         <action
-            android:id="@+id/actionNavToFullNews"
-            app:destination="@id/fullNewsFragment" />
+            android:id="@+id/action_newsFragment_to_newFragment"
+            app:destination="@id/newFragment" />
         <action
                 android:id="@+id/action_newsFragment_to_profileFragment"
                 app:destination="@id/profileFragment" />
+        <action
+                android:id="@+id/action_newsFragment_to_usersFragment"
+                app:destination="@id/usersFragment" />
     </fragment>
     <fragment
-        android:id="@+id/chatFragment"
-        android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" >
+            android:id="@+id/chatsFragment"
+            android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.ChatsFragment"
+            android:label="fragment_chats"
+            tools:layout="@layout/fragment_chats">
         <action
-            android:id="@+id/action_chatFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+                android:id="@+id/action_chatsFragment_to_newsFragment"
+                app:destination="@id/newsFragment" />
         <action
-                android:id="@+id/action_chatFragment_to_profileFragment"
+                android:id="@+id/action_chatsFragment_to_profileFragment"
                 app:destination="@id/profileFragment" />
+        <action
+                android:id="@+id/action_chatsFragment_to_chatFragment"
+                app:destination="@id/chatFragment" />
+        <action
+                android:id="@+id/action_chatsFragment_to_usersFragment"
+                app:destination="@id/usersFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/usersFragment"
+            android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.UsersFragment"
+            android:label="fragment_users"
+            tools:layout="@layout/fragment_users">
+        <action
+                android:id="@+id/action_usersFragment_to_newsFragment"
+                app:destination="@id/newsFragment" />
+        <action
+                android:id="@+id/action_usersFragment_to_profileFragment"
+                app:destination="@id/profileFragment" />
+        <action
+                android:id="@+id/action_usersFragment_to_chatFragment"
+                app:destination="@id/chatFragment" />
+        <action
+                android:id="@+id/action_usersFragment_to_userFragment"
+                app:destination="@id/userFragment" />
     </fragment>
     <fragment
             android:id="@+id/profileFragment"
@@ -42,16 +69,49 @@
                 android:id="@+id/action_profileFragment_to_newsFragment"
                 app:destination="@id/newsFragment" />
         <action
-                android:id="@+id/action_profileFragment_to_chatFragment"
-                app:destination="@id/chatFragment" />
+                android:id="@+id/action_profileFragment_to_chatsFragment"
+                app:destination="@id/chatsFragment" />
+        <action
+                android:id="@+id/action_profileFragment_to_usersFragment"
+                app:destination="@id/usersFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fullNewsFragment"
+        android:id="@+id/newFragment"
         android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.NewFragment"
         android:label="fragment_full_news"
         tools:layout="@layout/fragment_new" >
         <action
                 android:id="@+id/action_newFragment_to_newsFragment"
                 app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/chatFragment"
+            android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.ChatFragment"
+            android:label="fragment_chat"
+            tools:layout="@layout/fragment_chat" >
+        <action
+                android:id="@+id/action_chatFragment_to_chatsFragment"
+                app:destination="@id/chatsFragment" />
+        <action
+                android:id="@+id/action_chatFragment_to_newsFragment"
+                app:destination="@id/newsFragment" />
+        <action
+                android:id="@+id/action_chatFragment_to_usersFragment"
+                app:destination="@id/usersFragment" />
+        <action
+                android:id="@+id/action_chatFragment_to_profileFragment"
+                app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/userFragment"
+            android:name="bg.tu_varna.sit.si.socket_client_messenger.fragments.UserFragment"
+            android:label="fragment_chat"
+            tools:layout="@layout/fragment_chat" >
+        <action
+                android:id="@+id/action_userFragment_to_usersFragment"
+                app:destination="@id/usersFragment" />
+        <action
+                android:id="@+id/action_userFragment_to_chatFragment"
+                app:destination="@id/chatFragment" />
     </fragment>
 </navigation>
